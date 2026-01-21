@@ -25,7 +25,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-blue-500/5' : 'bg-white/80 backdrop-blur-md'
     }`}>
-      <div className="container-custom">
+      <div className="container-custom px-6 sm:px-8 lg:px-4">
         <nav className="flex items-center justify-between h-20 px-4">
           <Logo size="md" />
 

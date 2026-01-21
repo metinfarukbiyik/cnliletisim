@@ -25,7 +25,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 bg-white">
-      <div className="container-custom">
+      <div className="container-custom px-6 sm:px-8 lg:px-4">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-4">

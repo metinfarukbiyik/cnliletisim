@@ -20,7 +20,7 @@ const Footer = () => {
     <>
       <footer className="bg-white border-t border-gray-200">
         <div className="container-custom">
-          <div className="py-8 px-4">
+          <div className="py-8 px-6 sm:px-8 lg:px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Logo ve İletişim */}
               <div>
@@ -99,7 +99,7 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-gray-200 py-4 px-4 bg-gray-50">
+          <div className="border-t border-gray-200 py-4 px-6 sm:px-8 lg:px-4 bg-gray-50">
             <p className="text-center text-xs text-gray-500">
               © {currentYear} {companyData.name} - Tüm hakları saklıdır
             </p>
