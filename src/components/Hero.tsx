@@ -183,6 +183,13 @@ const Hero = () => {
                     className="h-16 w-auto object-contain"
                   />
                 </div>
+                <div className="flex items-center justify-center min-w-[200px] h-28 bg-white rounded-xl shadow-sm border border-gray-200 px-8 py-6">
+                  <img 
+                    src="/ttlogo.png" 
+                    alt="TT" 
+                    className="h-16 w-auto object-contain"
+                  />
+                </div>
               </div>
             ))}
           </div>

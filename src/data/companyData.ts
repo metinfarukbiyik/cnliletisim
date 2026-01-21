@@ -32,7 +32,7 @@ export interface CompanyInfo {
 export const companyData: CompanyInfo = {
   name: "CNL İletişim Elektrik ve Elektronik",
   tagline: "Baz İstasyonu Kurulum ve Revizyon Hizmetleri",
-  description: "Vodafone ve Turkcell baz istasyonlarına profesyonel kurulum ve revizyon hizmetleri sunuyoruz. Teknolojik altyapı çözümlerinde güvenilir ortağınız.",
+  description: "Turkcell, Türk Telekom ve Vodafone baz istasyonlarına profesyonel kurulum ve revizyon hizmetleri sunuyoruz. Teknolojik altyapı çözümlerinde güvenilir ortağınız.",
   services: [
     {
       id: 1,
@@ -104,7 +104,7 @@ export const companyData: CompanyInfo = {
   about: {
     title: "CNL İletişim Hakkında",
     content: [
-      "CNL İletişim, baz istasyonu kurulum ve revizyon alanında uzmanlaşmış, teknoloji odaklı bir şirkettir. Vodafone ve Turkcell gibi önde gelen telekomünikasyon operatörleriyle çalışarak, sektörde güvenilir bir konuma sahiptir.",
+      "CNL İletişim, baz istasyonu kurulum ve revizyon alanında uzmanlaşmış, teknoloji odaklı bir şirkettir. Turkcell, Türk Telekom ve Vodafone gibi önde gelen telekomünikasyon operatörleriyle çalışarak, sektörde güvenilir bir konuma sahiptir.",
       "Deneyimli ekibimiz ve modern teknolojik altyapımızla, baz istasyonu kurulumundan revizyon işlemlerine kadar geniş bir hizmet yelpazesi sunuyoruz. Müşteri memnuniyeti ve kalite odaklı çalışma prensibimizle, her projede en yüksek standartları hedefliyoruz.",
       "Teknolojik yeniliklere açık, sürekli gelişen bir yapıya sahip olan CNL İletişim, telekomünikasyon altyapısının güçlendirilmesine katkıda bulunmaktadır."
     ]
