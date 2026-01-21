@@ -30,6 +30,144 @@
     @apply max-w-7xl mx-auto;
   }
 
+  /* Tech Grid Background */
+  .bg-tech-grid {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+  }
+
+  .bg-tech-grid-light {
+    background-image: 
+      linear-gradient(rgba(249, 115, 22, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(236, 72, 153, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: grid-move 25s linear infinite;
+  }
+
+  .bg-tech-grid-blue {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+  }
+
+  @keyframes grid-move {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+
+  /* Signal Wave Animations */
+  @keyframes signal-wave {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  .animate-signal-wave {
+    animation: signal-wave 3s ease-out infinite;
+  }
+
+  .animate-signal-wave-delay {
+    animation: signal-wave 3s ease-out infinite 1s;
+  }
+
+  .animate-signal-wave-delay-2 {
+    animation: signal-wave 3s ease-out infinite 2s;
+  }
+
+  /* Pulse Animations */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes pulse-slower {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(1.1);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-slower {
+    animation: pulse-slower 6s ease-in-out infinite;
+  }
+
+  /* Spin Animations */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-slower {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  .animate-spin-slower {
+    animation: spin-slower 30s linear infinite;
+  }
+
+  /* Float Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-float-delay {
+    animation: float 3s ease-in-out infinite 1s;
+  }
+
+  .animate-float-delay-2 {
+    animation: float 3s ease-in-out infinite 2s;
+  }
+
   /* Logo scrolling animation */
   @keyframes scroll-logos {
     0% {
