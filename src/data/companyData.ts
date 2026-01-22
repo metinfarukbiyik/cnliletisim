@@ -30,7 +30,7 @@ export interface CompanyInfo {
 }
 
 export const companyData: CompanyInfo = {
-  name: "CNL İletişim Elektrik ve Elektronik",
+  name: "CNL İletişim Elektrik ve Elektronik Gıda İnşaat Tic. Ltd. Şti",
   tagline: "Baz İstasyonu Kurulum ve Revizyon Hizmetleri",
   description: "Turkcell, Türk Telekom ve Vodafone baz istasyonlarına profesyonel kurulum ve revizyon hizmetleri sunuyoruz. Teknolojik altyapı çözümlerinde güvenilir ortağınız.",
   services: [
@@ -94,6 +94,10 @@ export const companyData: CompanyInfo = {
     {
       name: "Turkcell",
       logo: "Turkcell"
+    },
+    {
+      name: "Türk Telekom",
+      logo: "turktelekom"
     }
   ],
   contact: {
