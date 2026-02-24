@@ -16,8 +16,8 @@ const About = () => {
           <div className="relative">
             <div className="relative rounded-xl overflow-hidden shadow-sm">
               <img 
-                src="/teknoloji.jpg" 
-                alt="CNL İletişim - Teknolojik Altyapı" 
+                src="/cnl3.jpg" 
+                alt="CNL İletişim - Güvenilir ve Deneyimli Ekip" 
                 className="w-full h-[600px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
