@@ -1,39 +1,35 @@
 const Logo = ({ className = '', size = 'md' }: { className?: string; size?: 'sm' | 'md' | 'lg' }) => {
-  const sizeClasses = {
-    sm: 'text-lg',
-    md: 'text-2xl',
-    lg: 'text-3xl'
-  };
+  const textSize = { sm: 'text-base', md: 'text-xl', lg: 'text-2xl' }[size];
+  const iconScale = { sm: 'scale-75', md: 'scale-100', lg: 'scale-125' }[size];
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      {/* Teknolojik Logo İkonu - CSS ile */}
-      <div className="relative">
-        {/* Ana Hexagon Şekli */}
-        <div className="relative w-12 h-12 flex items-center justify-center">
-          {/* Arka plan gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 opacity-90 rounded-lg rotate-45"></div>
-          
-          {/* İç tasarım */}
-          <div className="relative z-10 flex flex-col items-center justify-center">
-            <div className="text-white font-black text-xl tracking-tighter">CNL</div>
-          </div>
-          
-          {/* Glow efekti */}
-          <div className="absolute inset-0 bg-blue-500 blur-md opacity-40 rounded-lg"></div>
-        </div>
-        
-        {/* Köşe detayları */}
-        <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full"></div>
-        <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-600 rounded-full"></div>
+      {/* Signal Tower Icon */}
+      <div className={`relative flex items-end justify-center ${iconScale} origin-left`} style={{ width: 36, height: 36 }}>
+        {/* Bars — left to right, height increases */}
+        <span className="absolute bottom-0 left-0 w-[5px] rounded-sm bg-slate-800" style={{ height: '45%' }} />
+        <span className="absolute bottom-0 w-[5px] rounded-sm bg-slate-800" style={{ left: 8, height: '65%' }} />
+        <span className="absolute bottom-0 w-[5px] rounded-sm bg-slate-800" style={{ left: 16, height: '85%' }} />
+        <span className="absolute bottom-0 w-[5px] rounded-sm bg-slate-500" style={{ left: 24, height: '55%' }} />
+
+        {/* Pulse dot on tallest bar */}
+        <span
+          className="absolute top-0 w-[5px] h-[5px] rounded-full bg-slate-800"
+          style={{ left: 16 }}
+        />
+        {/* Animated ring around the dot */}
+        <span
+          className="absolute rounded-full border border-slate-500 animate-ping opacity-60"
+          style={{ top: -3, left: 13, width: 11, height: 11 }}
+        />
       </div>
-      
-      {/* Logo Metni */}
-      <div className="flex flex-col leading-none">
-        <span className={`${sizeClasses[size]} font-bold text-gray-800 tracking-tight`}>
+
+      {/* Text */}
+      <div className="flex flex-col leading-none gap-0.5">
+        <span className={`${textSize} font-bold text-slate-800 tracking-tight`}>
           CNL İletişim
         </span>
-        <span className="text-xs text-blue-600 font-semibold tracking-wide">
+        <span className="text-[10px] font-semibold text-slate-400 tracking-[0.12em] uppercase">
           Base Station Solutions
         </span>
       </div>

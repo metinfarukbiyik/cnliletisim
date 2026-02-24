@@ -23,10 +23,10 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-blue-500/5' : 'bg-white/80 backdrop-blur-md'
+      scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white/70 backdrop-blur-sm'
     }`}>
-      <div className="container-custom px-6 sm:px-8 lg:px-4">
-        <nav className="flex items-center justify-between h-20 px-4">
+      <div className="container-custom px-6">
+        <nav className="flex items-center justify-between h-16">
           <Logo size="md" />
 
           <div className="hidden md:flex items-center gap-8">
@@ -34,31 +34,31 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 text-sm relative group"
+                className="text-slate-700 hover:text-slate-900 font-medium transition-colors text-sm relative group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-800 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
 
           <button
-            className="md:hidden text-gray-700 p-2"
+            className="md:hidden text-slate-700 p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Menu"
           >
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
           </button>
         </nav>
 
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-lg">
+          <div className="md:hidden border-t border-slate-100 bg-white/95 backdrop-blur-md">
             <div className="px-4 py-4 space-y-4">
               {menuItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="block text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                  className="block text-slate-700 hover:text-slate-900 font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

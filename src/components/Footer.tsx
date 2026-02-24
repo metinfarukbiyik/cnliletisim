@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-white border-t border-gray-200">
+      <footer className="bg-white border-t border-slate-200">
         <div className="container-custom">
           <div className="py-8 px-6 sm:px-8 lg:px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -28,20 +28,20 @@ const Footer = () => {
                   <Logo />
                 </div>
                 <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <FaPhone className="w-3 h-3 text-blue-600" />
-                    <a href={`tel:${companyData.contact.phone}`} className="hover:text-blue-600 transition-colors">
+                  <div className="flex items-center gap-2 text-slate-600">
+                    <FaPhone className="w-3 h-3 text-slate-600" />
+                    <a href={`tel:${companyData.contact.phone}`} className="hover:text-slate-900 transition-colors">
                       {companyData.contact.phone}
                     </a>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
+                  <div className="flex items-center gap-2 text-slate-600">
                     <FaEnvelope className="w-3 h-3 text-blue-600" />
                     <a href={`mailto:${companyData.contact.email}`} className="hover:text-blue-600 transition-colors text-xs break-all">
                       {companyData.contact.email}
                     </a>
                   </div>
-                  <div className="flex items-start gap-2 text-gray-600">
-                    <FaMapMarkerAlt className="w-3 h-3 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div className="flex items-start gap-2 text-slate-600">
+                    <FaMapMarkerAlt className="w-3 h-3 text-slate-600 mt-0.5 flex-shrink-0" />
                     <address className="not-italic text-xs leading-relaxed">
                       {companyData.contact.address}
                     </address>
@@ -51,13 +51,13 @@ const Footer = () => {
 
               {/* Hızlı Linkler */}
               <div>
-                <h3 className="text-sm font-bold text-gray-900 mb-3">Hızlı Linkler</h3>
+                <h3 className="text-sm font-bold text-slate-800 mb-3">Hızlı Linkler</h3>
                 <ul className="space-y-2">
                   {quickLinks.map((link, index) => (
                     <li key={index}>
                       <a
                         href={link.href}
-                        className="text-gray-600 hover:text-blue-600 transition-colors text-sm"
+                        className="text-slate-600 hover:text-blue-600 transition-colors text-sm"
                       >
                         {link.name}
                       </a>
@@ -68,23 +68,23 @@ const Footer = () => {
 
               {/* Yasal ve Developer Credit */}
               <div className="md:text-right">
-                <h3 className="text-sm font-bold text-gray-900 mb-3">Yasal</h3>
+                <h3 className="text-sm font-bold text-slate-800 mb-3">Yasal</h3>
                 <div className="space-y-2 mb-6">
                   <button 
                     onClick={() => setPrivacyModalOpen(true)}
-                    className="block text-gray-600 hover:text-blue-600 transition-colors text-sm md:ml-auto"
+                    className="block text-slate-600 hover:text-blue-600 transition-colors text-sm md:ml-auto"
                   >
                     Gizlilik Politikası
                   </button>
                   <button 
                     onClick={() => setTermsModalOpen(true)}
-                    className="block text-gray-600 hover:text-blue-600 transition-colors text-sm md:ml-auto"
+                    className="block text-slate-600 hover:text-blue-600 transition-colors text-sm md:ml-auto"
                   >
                     Kullanım Koşulları
                   </button>
                 </div>
-                <div className="pt-4 border-t border-gray-200">
-                  <p className="text-xs text-gray-500 mb-1">Web Tasarım & Yazılım</p>
+                <div className="pt-4 border-t border-slate-200">
+                  <p className="text-xs text-slate-500 mb-1">Web Tasarım & Yazılım</p>
                   <a 
                     href="https://biyik.dev" 
                     target="_blank"
@@ -99,8 +99,8 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-gray-200 py-4 px-6 sm:px-8 lg:px-4 bg-gray-50">
-            <p className="text-center text-xs text-gray-500">
+          <div className="border-t border-slate-200 py-4 px-6 sm:px-8 lg:px-4 bg-slate-50">
+            <p className="text-center text-xs text-slate-500">
               © {currentYear} {companyData.name} - Tüm hakları saklıdır
             </p>
           </div>
@@ -117,8 +117,8 @@ const Footer = () => {
         <div className="space-y-6">
           {legalData.privacyPolicy.sections.map((section, index) => (
             <div key={index}>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">{section.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{section.content}</p>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">{section.title}</h3>
+              <p className="text-slate-600 leading-relaxed">{section.content}</p>
             </div>
           ))}
         </div>
@@ -134,8 +134,8 @@ const Footer = () => {
         <div className="space-y-6">
           {legalData.termsOfUse.sections.map((section, index) => (
             <div key={index}>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">{section.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{section.content}</p>
+              <h3 className="text-lg font-bold text-slate-800 mb-3">{section.title}</h3>
+              <p className="text-slate-600 leading-relaxed">{section.content}</p>
             </div>
           ))}
         </div>

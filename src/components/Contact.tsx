@@ -26,15 +26,11 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="container-custom px-6 sm:px-8 lg:px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-4">
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-semibold text-slate-800 mb-3">
             İletişim
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Bizimle İletişime Geçin
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-slate-600 max-w-xl">
             Projeleriniz için profesyonel çözümler sunmaya hazırız
           </p>
         </div>
@@ -48,23 +44,22 @@ const Contact = () => {
                 <a
                   key={index}
                   href={info.href}
-                  className="group bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+                  className="group bg-slate-50/50 p-8 rounded-xl border border-slate-100 hover:border-slate-200 transition-colors"
                 >
                   <div className="flex flex-col items-center text-center space-y-4">
                     {/* Icon */}
-                    <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-8 h-8 text-white" />
+                    <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
+                      <IconComponent className="w-6 h-6 text-slate-600" />
                     </div>
-
-                    {/* Label */}
-                    <div className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                    <div className="text-xs font-medium text-slate-500 uppercase tracking-wider">
                       {info.label}
                     </div>
 
                     {/* Value */}
-                    <div className="text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors break-words w-full">
+                    <div className="text-base font-medium text-slate-800 break-words w-full">
                       {info.value}
                     </div>
+
                   </div>
                 </a>
               );
@@ -72,11 +67,11 @@ const Contact = () => {
           </div>
 
           {/* Additional Info */}
-          <div className="mt-12 text-center p-8 bg-blue-50 rounded-2xl border border-blue-100">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
+          <div className="mt-12 text-center p-8 bg-slate-50 rounded-xl border border-slate-100">
+            <h3 className="text-lg font-semibold text-slate-800 mb-2">
               7/24 Teknik Destek
             </h3>
-            <p className="text-gray-600">
+            <p className="text-slate-600 text-sm">
               Acil durumlar için hızlı müdahale ve çözüm odaklı hizmet anlayışımızla yanınızdayız
             </p>
           </div>

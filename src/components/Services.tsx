@@ -5,20 +5,17 @@ const Services = () => {
     <section id="services" className="py-20 bg-white">
       <div className="container-custom px-6 sm:px-8 lg:px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-4">
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-semibold text-slate-800 mb-3">
             Hizmetlerimiz
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Profesyonel Çözümlerimiz
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-slate-600 max-w-xl">
             Telekomünikasyon altyapısı için eksiksiz hizmet yelpazesi
           </p>
         </div>
 
-        {/* Service Cards - 2x2 Grid Layout - Minimal & Elegant */}
-        <div className="max-w-6xl mx-auto space-y-6">
+        {/* Service Cards */}
+        <div className="space-y-6">
           {/* First Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {companyData.services.slice(0, 2).map((service) => {
@@ -26,29 +23,25 @@ const Services = () => {
               return (
                 <div
                   key={service.id}
-                  className="group bg-white p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300"
+                  className="group bg-white p-8 rounded-xl border border-slate-100 hover:border-slate-200 transition-colors"
                 >
                   {/* Icon - Minimal */}
-                  <div className="w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
-                    <IconComponent className="w-7 h-7 text-white" />
+                  <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-5">
+                    <IconComponent className="w-6 h-6 text-slate-600" />
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-2">
                     {service.title}
                   </h3>
 
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                  <p className="text-slate-600 text-sm mb-5 leading-relaxed">
                     {service.description}
                   </p>
 
-                  {/* Features - Clean List */}
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {service.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-2.5 text-sm text-gray-700">
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></span>
-                        <span>{feature}</span>
+                      <li key={fIndex} className="flex items-start gap-2 text-sm text-slate-600">
+                        <span className="w-1 h-1 bg-slate-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                        {feature}
                       </li>
                     ))}
                   </ul>
@@ -64,29 +57,25 @@ const Services = () => {
               return (
                 <div
                   key={service.id}
-                  className="group bg-white p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300"
+                  className="group bg-white p-8 rounded-xl border border-slate-100 hover:border-slate-200 transition-colors"
                 >
                   {/* Icon - Minimal */}
-                  <div className="w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
-                    <IconComponent className="w-7 h-7 text-white" />
+                  <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-5">
+                    <IconComponent className="w-6 h-6 text-slate-600" />
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-2">
                     {service.title}
                   </h3>
 
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                  <p className="text-slate-600 text-sm mb-5 leading-relaxed">
                     {service.description}
                   </p>
 
-                  {/* Features - Clean List */}
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {service.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-2.5 text-sm text-gray-700">
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></span>
-                        <span>{feature}</span>
+                      <li key={fIndex} className="flex items-start gap-2 text-sm text-slate-600">
+                        <span className="w-1 h-1 bg-slate-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                        {feature}
                       </li>
                     ))}
                   </ul>
@@ -96,10 +85,9 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Bottom info */}
         <div className="mt-12 text-center">
-          <p className="text-sm text-gray-500">
-            Tüm hizmetlerimizde <span className="font-semibold text-blue-600">7/24 teknik destek</span> sunuyoruz
+          <p className="text-sm text-slate-500">
+            Tüm hizmetlerimizde <span className="font-medium text-slate-700">7/24 teknik destek</span> sunuyoruz
           </p>
         </div>
       </div>
