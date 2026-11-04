@@ -1,5 +1,6 @@
 import { FaTimes } from 'react-icons/fa';
 import { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface ModalProps {
   isOpen: boolean;
@@ -10,73 +11,64 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, title, lastUpdated, children }: ModalProps) => {
-  // Close on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
-    
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden';
     }
-    
     return () => {
       document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
-      <div 
-        className="fixed inset-0 bg-gray-900/50 backdrop-blur-sm transition-opacity"
-        onClick={onClose}
-      ></div>
-
-      {/* Modal Container */}
-      <div className="flex min-h-full items-center justify-center p-4">
-        <div 
-          className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl flex flex-col max-h-[90vh]"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Header */}
-          <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-5 flex items-center justify-between rounded-t-2xl">
-            <div>
-              <h2 className="text-xl font-bold text-gray-900">{title}</h2>
-              {lastUpdated && (
-                <p className="text-xs text-gray-500 mt-1">Son Güncelleme: {lastUpdated}</p>
-              )}
-            </div>
-            <button
-              onClick={onClose}
-              className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors flex-shrink-0"
-              aria-label="Kapat"
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[60] overflow-y-auto" role="dialog" aria-modal="true" aria-label={title}>
+          <motion.div
+            className="fixed inset-0 backdrop-blur-sm"
+            style={{ background: 'color-mix(in srgb, #0b1020 55%, transparent)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          />
+          <div className="flex min-h-full items-center justify-center p-4 pointer-events-none">
+            <motion.div
+              className="panel relative w-full max-w-3xl flex flex-col max-h-[90vh] pointer-events-auto"
+              initial={{ opacity: 0, y: -8, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.97 }}
+              transition={{ duration: 0.22 }}
             >
-              <FaTimes className="w-4 h-4 text-gray-600" />
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto px-6 py-6">
-            {children}
-          </div>
-
-          {/* Footer */}
-          <div className="flex-shrink-0 bg-gray-50 border-t border-gray-200 px-6 py-4 rounded-b-2xl">
-            <button
-              onClick={onClose}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl transition-colors"
-            >
-              Kapat
-            </button>
+              <div className="flex-shrink-0 px-6 py-5 flex items-center justify-between gap-4" style={{ borderBottom: '1px solid var(--line)' }}>
+                <div>
+                  <h2 className="text-lg font-extrabold tracking-[0.02em]">{title}</h2>
+                  {lastUpdated && (
+                    <p className="mono text-[11px] tracking-[0.08em] mt-1" style={{ color: 'var(--ink-muted)' }}>
+                      SON GÜNCELLEME · {lastUpdated}
+                    </p>
+                  )}
+                </div>
+                <button onClick={onClose} className="btn !h-9 !w-9 !p-0 flex-shrink-0" aria-label="Kapat">
+                  <FaTimes size={13} />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto px-6 py-6">{children}</div>
+              <div className="flex-shrink-0 px-6 py-4" style={{ borderTop: '1px solid var(--line)', background: 'var(--panel-soft)' }}>
+                <button onClick={onClose} className="btn primary w-full">
+                  Kapat
+                </button>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 };
 

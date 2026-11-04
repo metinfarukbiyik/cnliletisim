@@ -1,37 +1,30 @@
 const Logo = ({ className = '', size = 'md' }: { className?: string; size?: 'sm' | 'md' | 'lg' }) => {
-  const textSize = { sm: 'text-base', md: 'text-xl', lg: 'text-2xl' }[size];
-  const iconScale = { sm: 'scale-75', md: 'scale-100', lg: 'scale-125' }[size];
+  const s = { sm: 0.82, md: 1, lg: 1.2 }[size];
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      {/* Signal Tower Icon */}
-      <div className={`relative flex items-end justify-center ${iconScale} origin-left`} style={{ width: 36, height: 36 }}>
-        {/* Bars — left to right, height increases */}
-        <span className="absolute bottom-0 left-0 w-[5px] rounded-sm bg-slate-800" style={{ height: '45%' }} />
-        <span className="absolute bottom-0 w-[5px] rounded-sm bg-slate-800" style={{ left: 8, height: '65%' }} />
-        <span className="absolute bottom-0 w-[5px] rounded-sm bg-slate-800" style={{ left: 16, height: '85%' }} />
-        <span className="absolute bottom-0 w-[5px] rounded-sm bg-slate-500" style={{ left: 24, height: '55%' }} />
+    <div className={`flex items-center ${className}`}>
+      {/* Tower mark with animated signal rings */}
+      <svg width={40 * s} height={40 * s} viewBox="0 0 40 40" aria-hidden="true" className="flex-none">
+        <rect x="0.75" y="0.75" width="38.5" height="38.5" rx="2" fill="var(--panel)" stroke="var(--line-strong)" strokeWidth="1.5" />
+        <circle cx="20" cy="13" r="5" fill="none" stroke="var(--blue)" strokeWidth="1.5" className="signal-ring" />
+        <circle cx="20" cy="13" r="5" fill="none" stroke="var(--blue)" strokeWidth="1.5" className="signal-ring" style={{ animationDelay: '1.2s' }} />
+        <path d="M20 14 L13 33 M20 14 L27 33 M15.3 27 H24.7 M16.8 22 H23.2" stroke="var(--ink-strong)" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <circle cx="20" cy="13" r="2.6" fill="var(--amber)" stroke="var(--ink-strong)" strokeWidth="1.2" />
+      </svg>
 
-        {/* Pulse dot on tallest bar */}
-        <span
-          className="absolute top-0 w-[5px] h-[5px] rounded-full bg-slate-800"
-          style={{ left: 16 }}
-        />
-        {/* Animated ring around the dot */}
-        <span
-          className="absolute rounded-full border border-slate-500 animate-ping opacity-60"
-          style={{ top: -3, left: 13, width: 11, height: 11 }}
-        />
-      </div>
-
-      {/* Text */}
-      <div className="flex flex-col leading-none gap-0.5">
-        <span className={`${textSize} font-bold text-slate-800 tracking-tight`}>
-          CNL İletişim
-        </span>
-        <span className="text-[10px] font-semibold text-slate-400 tracking-[0.12em] uppercase">
-          Base Station Solutions
-        </span>
+      <div className="ml-3 leading-none">
+        <div
+          className="mono font-extrabold whitespace-nowrap"
+          style={{ fontSize: 19 * s, letterSpacing: '0.085em', color: 'var(--ink-strong)' }}
+        >
+          CNL <em className="italic" style={{ color: 'var(--primary)' }}>İLETİŞİM</em>
+        </div>
+        <div
+          className="mono mt-1 whitespace-nowrap"
+          style={{ fontSize: 10.5 * s, letterSpacing: '0.16em', color: 'var(--ink-muted)' }}
+        >
+          BASE STATION SOLUTIONS
+        </div>
       </div>
     </div>
   );
