@@ -50,7 +50,7 @@
     .ozet { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .cip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 13px; color: var(--ink); background: var(--panel); }
     .cip b { font-weight: 600; }
-    .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 20px; }
+    .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 20px; align-items: start; }
     .kart { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 1px 2px var(--shadow); min-width: 0; }
     .kart.oneri { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent), 0 12px 32px var(--shadow); }
     .kart-ust { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
@@ -84,6 +84,13 @@
     .not { margin: 6px 0 0; padding: 12px 14px; border-left: 3px solid var(--amber); background: var(--panel-soft); border-radius: 0 10px 10px 0; font-size: 14px; }
     .uyari { display: none; margin: 14px 0 0; padding: 12px 14px; border: 1px solid var(--amber); border-radius: 10px; font-size: 14px; color: var(--ink); background: color-mix(in srgb, var(--amber) 12%, transparent); }
     .uyari.goster { display: block; }
+    .kart.pasif { background: var(--panel-soft); box-shadow: none; }
+    .rozet-yakinda { font: 600 12px/1 "IBM Plex Sans", sans-serif; color: var(--ink); background: color-mix(in srgb, var(--amber) 22%, transparent); border: 1px solid var(--amber); border-radius: 999px; padding: 5px 10px; white-space: nowrap; }
+    .yakinda { display: flex; gap: 14px; align-items: flex-start; margin-top: 18px; padding: 18px; border: 1px dashed var(--line-strong); border-radius: 12px; background: var(--panel); }
+    .yakinda > svg { width: 28px; height: 28px; flex: none; color: var(--amber); }
+    .yakinda strong { display: block; color: var(--ink-strong); font-weight: 600; }
+    .yakinda p { margin: 6px 0 0; font-size: 14px; color: var(--ink-muted); }
+    .yakinda a { color: var(--primary); font-weight: 500; }
     section.panel { margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
     section.panel h2 { font-size: 17px; margin-bottom: 14px; }
     .surumler { margin: 0; padding: 0; list-style: none; }
@@ -122,7 +129,8 @@
         <h1>CREDA Mobil</h1>
         <p>Saha kayıtları, iş emirleri, dokümanlar ve bildirimler telefonunuzda. Giriş bilgileriniz CREDA System ile aynıdır.</p>
         <div class="ozet">
-          <span class="cip">Güncel sürüm <b>1.1.0</b></span>
+          <span class="cip">Android <b>1.1.0</b></span>
+          <span class="cip">iPhone <b>yakında</b></span>
           <span class="cip">Yayın <b><time datetime="2026-11-13">13 Kasım 2026</time></b></span>
         </div>
       </div>
@@ -158,31 +166,18 @@
         <p class="not">Güncellemede yeni APK'yı aynı şekilde indirip kurun; uygulama üzerine yazılır, oturumunuz korunur.</p>
       </article>
 
-      <article class="kart" id="ios">
+      <article class="kart pasif" id="ios">
         <div class="kart-ust">
           <h2><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.28 1.86-3.38 1.95-3.43-1.06-1.55-2.71-1.77-3.3-1.79-1.4-.14-2.74.83-3.45.83-.71 0-1.81-.81-2.98-.79-1.53.02-2.94.89-3.73 2.26-1.59 2.76-.41 6.84 1.14 9.08.76 1.1 1.66 2.33 2.84 2.28 1.14-.05 1.57-.74 2.95-.74 1.38 0 1.77.74 2.98.71 1.23-.02 2.01-1.12 2.76-2.22.87-1.27 1.23-2.5 1.25-2.57-.03-.01-2.39-.92-2.41-3.64zM14.1 5.9c.63-.76 1.05-1.82.94-2.88-.91.04-2 .6-2.66 1.36-.58.67-1.09 1.75-.95 2.78 1.01.08 2.04-.51 2.67-1.26z"/></svg>iPhone / iPad</h2>
-          <span class="rozet">Bu cihaz için</span>
+          <span class="rozet-yakinda">Yakında</span>
         </div>
-        <a class="dugme" href="itms-services://?action=download-manifest&amp;url=https://cnliletisim.com/uygulamalar/ios/manifest.plist">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
-          iPhone'a kur <small>164 KB</small>
-        </a>
-        <p class="uyari" id="ios-uyari">Kurulum düğmesi yalnız <b>Safari</b>'de çalışır. Bu sayfanın adresini kopyalayıp Safari'de açın.</p>
-        <dl class="detay">
-          <dt>Sürüm</dt><dd>1.1.0 (yapı 2)</dd>
-          <dt>Gereksinim</dt><dd>iOS / iPadOS 15 ve üzeri</dd>
-          <dt>Dosya</dt><dd><code>creda.ipa</code> · 164 KB</dd>
-          <dt>Paket</dt><dd><code>com.cnliletisim.creda</code></dd>
-          <dt>Dağıtım</dt><dd>Kurumsal (Ad Hoc) · yalnız kayıtlı cihazlar</dd>
-          <dt>Bildirimler</dt><dd>Anında gelir</dd>
-        </dl>
-        <h3>Kurulum</h3>
-        <ol>
-          <li>Bu sayfayı iPhone'da <b>Safari</b> ile açın ve düğmeye dokunun.</li>
-          <li>Çıkan pencerede <b>Yükle</b>'ye dokunun; uygulama ana ekrana iner.</li>
-          <li><b>CREDA</b>'yı açıp giriş yapın; <b>Bildirimler</b> → <b>Telefon bildirimi</b> → <b>Aç</b> ile bildirimlere izin verin.</li>
-        </ol>
-        <p class="not">Uygulama yalnız sisteme kayıtlı iPhone'lara kurulur. Kurulum başlamıyor ya da "yüklenemiyor" uyarısı çıkıyorsa cihazınızın kaydı için sistem yöneticinize başvurun.</p>
+        <div class="yakinda">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div>
+            <strong>iPhone ve iPad sürümü yakında eklenecektir.</strong>
+            <p>Hazır olduğunda kurulum bu sayfadan yapılacak. O zamana kadar CREDA System'i iPhone'da Safari ile <a href="https://creda.cnliletisim.com">creda.cnliletisim.com</a> adresinden kullanabilirsiniz.</p>
+          </div>
+        </div>
       </article>
     </div>
 
@@ -192,7 +187,7 @@
       </div>
       <div>
         <h2>Telefonla açın</h2>
-        <p>Kurulum telefondan yapılır. Telefonunuzun kamerasıyla kodu okutun veya adresi tarayıcıya yazın:</p>
+        <p>Kurulum Android telefondan yapılır. Telefonunuzun kamerasıyla kodu okutun veya adresi tarayıcıya yazın:</p>
         <code>cnliletisim.com/uygulamalar</code>
       </div>
     </section>
@@ -227,17 +222,16 @@
       // iPadOS kendini Mac olarak tanıttığı için dokunmatik ekran da kontrol edilir.
       var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
       var android = /Android/.test(ua);
-      var hedef = ios ? 'ios' : android ? 'android' : null;
-      if (hedef) {
-        var kart = document.getElementById(hedef);
-        kart.classList.add('oneri');
+      if (android) {
+        document.getElementById('android').classList.add('oneri');
+      } else if (ios) {
+        // iPhone sürümü henüz yok; iPhone'dan gelen ziyaretçi önce "yakında" bilgisini görür.
+        var kart = document.getElementById('ios');
         kart.parentNode.insertBefore(kart, kart.parentNode.firstChild);
       } else {
         // Bilgisayardan açıldıysa telefona geçmek için QR kodu gösterilir.
         document.getElementById('qr').classList.add('goster');
       }
-      // iPhone'da Chrome/Firefox/Edge vb. itms-services bağlantısını açamaz.
-      if (ios && /CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(ua)) document.getElementById('ios-uyari').classList.add('goster');
       var surum = /Android (\d+)/.exec(ua);
       if (surum && Number(surum[1]) < 10) document.getElementById('android-uyari').classList.add('goster');
     })();
