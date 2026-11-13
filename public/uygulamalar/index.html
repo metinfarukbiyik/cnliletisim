@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CREDA Mobil — CNL İletişim</title>
+  <meta name="description" content="CNL İletişim personeli için CREDA System mobil uygulaması: Android ve iPhone kurulumu." />
+  <!-- Personel sayfası; arama motorlarında listelenmez. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#fdfdfe" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="/uygulamalar/ikon-180.png" />
+  <link rel="apple-touch-icon" href="/uygulamalar/ikon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fdfdfe; --panel: #ffffff; --panel-soft: #f5f8fe; --ink: #0b2b86; --ink-strong: #00238a;
+      --ink-body: #2f4d8e; --ink-muted: #5d6f95; --line: #dfe7f4; --line-strong: #b5c8e7;
+      --grid: rgba(31, 95, 224, 0.055); --primary: #003ca8; --primary-hover: #0b3aa8; --on-primary: #fff;
+      --green: #12a56b; --amber: #f8b900; --shadow: rgba(141, 154, 179, 0.28);
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1020; --panel: #0f1730; --panel-soft: #121c3a; --ink: #c9d8ff; --ink-strong: #e6edff;
+        --ink-body: #a9bce6; --ink-muted: #8195c4; --line: #1e2b52; --line-strong: #2d3f72;
+        --grid: rgba(120, 160, 255, 0.05); --primary: #3a7bff; --primary-hover: #5a90ff;
+        --green: #2bbb78; --amber: #ffc83d; --shadow: rgba(0, 0, 0, 0.45);
+        color-scheme: dark;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink-body);
+      font: 400 16px/1.6 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    main { max-width: 980px; margin: 0 auto; padding: 40px 16px 56px; }
+    .geri { display: inline-flex; gap: 6px; align-items: center; color: var(--ink-muted); text-decoration: none; font-size: 14px; }
+    .geri:hover { color: var(--ink); }
+    header { display: flex; gap: 20px; align-items: center; margin: 24px 0 32px; }
+    header img { width: 72px; height: 72px; border-radius: 18px; flex: none; box-shadow: 0 8px 24px var(--shadow); }
+    .etiket { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); }
+    h1 { margin: 6px 0 4px; color: var(--ink-strong); font: 700 clamp(26px, 5vw, 36px)/1.15 "JetBrains Mono", ui-monospace, monospace; letter-spacing: -.02em; }
+    header p { margin: 0; color: var(--ink-muted); }
+    .ozet { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .cip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 13px; color: var(--ink); background: var(--panel); }
+    .cip b { font-weight: 600; }
+    .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 20px; }
+    .kart { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 1px 2px var(--shadow); min-width: 0; }
+    .kart.oneri { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent), 0 12px 32px var(--shadow); }
+    .kart-ust { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .kart-ust h2 { display: flex; align-items: center; gap: 10px; }
+    .kart-ust h2 svg { width: 24px; height: 24px; flex: none; color: var(--ink-muted); }
+    h2 { margin: 0; color: var(--ink-strong); font: 700 20px/1.3 "JetBrains Mono", ui-monospace, monospace; }
+    .rozet { display: none; font: 600 12px/1 "IBM Plex Sans", sans-serif; color: var(--green); border: 1px solid currentColor; border-radius: 999px; padding: 5px 10px; white-space: nowrap; }
+    .oneri .rozet { display: inline-block; }
+    .dugme {
+      display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 52px; padding: 0 20px; margin-top: 18px;
+      background: var(--primary); color: var(--on-primary); border-radius: 12px; text-decoration: none;
+      font: 600 16px/1 "IBM Plex Sans", sans-serif; transition: background .15s;
+    }
+    .dugme:hover { background: var(--primary-hover); }
+    .dugme:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+    .dugme svg { width: 20px; height: 20px; flex: none; }
+    .dugme small { font-weight: 400; opacity: .8; font-size: 13px; }
+    dl.detay { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 18px 0 0; padding: 14px 16px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; }
+    dl.detay dt { color: var(--ink-muted); }
+    dl.detay dd { margin: 0; color: var(--ink); font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+    dl.detay code { font: 500 12px/1.5 "JetBrains Mono", monospace; }
+    h3 { margin: 22px 0 10px; color: var(--ink-strong); font: 600 15px/1.3 "IBM Plex Sans", sans-serif; }
+    .kart ol { margin: 0; padding: 0; list-style: none; counter-reset: adim; }
+    .kart ol li { counter-increment: adim; position: relative; padding: 0 0 12px 40px; font-size: 15px; }
+    .kart ol li::before {
+      content: counter(adim); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 8px;
+      display: grid; place-items: center; background: var(--panel-soft); border: 1px solid var(--line-strong);
+      color: var(--ink); font: 700 13px/1 "JetBrains Mono", monospace;
+    }
+    b { color: var(--ink); font-weight: 600; }
+    .not { margin: 6px 0 0; padding: 12px 14px; border-left: 3px solid var(--amber); background: var(--panel-soft); border-radius: 0 10px 10px 0; font-size: 14px; }
+    .uyari { display: none; margin: 14px 0 0; padding: 12px 14px; border: 1px solid var(--amber); border-radius: 10px; font-size: 14px; color: var(--ink); background: color-mix(in srgb, var(--amber) 12%, transparent); }
+    .uyari.goster { display: block; }
+    section.panel { margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+    section.panel h2 { font-size: 17px; margin-bottom: 14px; }
+    .surumler { margin: 0; padding: 0; list-style: none; }
+    .surumler > li { padding: 14px 0; border-top: 1px solid var(--line); }
+    .surumler > li:first-child { border-top: 0; padding-top: 0; }
+    .surum-ust { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+    .surum-ust strong { font: 700 15px "JetBrains Mono", monospace; color: var(--ink-strong); }
+    .surum-ust time { font-size: 13px; color: var(--ink-muted); }
+    .yeni { font: 600 11px/1 "IBM Plex Sans", sans-serif; text-transform: uppercase; letter-spacing: .06em; color: var(--green); border: 1px solid currentColor; border-radius: 999px; padding: 3px 8px; }
+    .surumler ul { margin: 8px 0 0; padding-left: 20px; font-size: 15px; }
+    .surumler ul li { margin-bottom: 4px; }
+    .qr { display: none; gap: 24px; align-items: center; }
+    .qr.goster { display: flex; }
+    .qr-kod { flex: none; width: 148px; height: 148px; padding: 10px; background: #fff; border-radius: 12px; border: 1px solid var(--line-strong); }
+    .qr-kod svg { display: block; width: 100%; height: 100%; }
+    .qr p { margin: 0 0 6px; }
+    .qr code { font: 500 13px "JetBrains Mono", monospace; color: var(--ink); overflow-wrap: anywhere; }
+    footer { margin-top: 32px; font-size: 13px; color: var(--ink-muted); text-align: center; }
+    code { font: 500 13px "JetBrains Mono", monospace; }
+    @media (max-width: 520px) {
+      header { gap: 14px; }
+      header img { width: 56px; height: 56px; border-radius: 14px; }
+      .kart, section.panel { padding: 18px; }
+      .qr.goster { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="geri" href="/">← cnliletisim.com</a>
+
+    <header>
+      <img src="/uygulamalar/ikon-180.png" alt="" width="72" height="72" />
+      <div>
+        <span class="etiket">Personel uygulaması</span>
+        <h1>CREDA Mobil</h1>
+        <p>Saha kayıtları, iş emirleri, dokümanlar ve bildirimler telefonunuzda. Giriş bilgileriniz CREDA System ile aynıdır.</p>
+        <div class="ozet">
+          <span class="cip">Güncel sürüm <b>1.1.0</b></span>
+          <span class="cip">Yayın <b><time datetime="2026-11-13">13 Kasım 2026</time></b></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="kartlar">
+      <article class="kart" id="android">
+        <div class="kart-ust">
+          <h2><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.5.5 0 00-.87-.5l-1.86 3.22A11.4 11.4 0 0012 8c-1.7 0-3.3.37-4.71 1.02L5.43 5.8a.5.5 0 00-.87.5L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/></svg>Android</h2>
+          <span class="rozet">Bu cihaz için</span>
+        </div>
+        <a class="dugme" href="/uygulamalar/android/creda.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          APK dosyasını indir <small>171 KB</small>
+        </a>
+        <p class="uyari" id="android-uyari">Bu telefonun Android sürümü uygulama için eski görünüyor. CREDA mobil Android 10 ve üzerinde çalışır.</p>
+        <dl class="detay">
+          <dt>Sürüm</dt><dd>1.1.0 (yapı 2)</dd>
+          <dt>Gereksinim</dt><dd>Android 10 ve üzeri</dd>
+          <dt>Dosya</dt><dd><code>creda.apk</code> · 171 KB</dd>
+          <dt>Paket</dt><dd><code>com.cnliletisim.creda</code></dd>
+          <dt>İmza</dt><dd><code title="İmza sertifikası SHA-256: 6C:CE:F0:2C:00:9B:13:E6:33:2A:62:28:C0:70:0E:44:03:02:A6:77:03:8E:63:A0:88:BB:EB:90:80:D8:2E:46">SHA-256 6C:CE:F0:2C … D8:2E:46</code></dd>
+          <dt>Bildirimler</dt><dd>Arka planda denetlenir; 15 dakikaya kadar gecikebilir</dd>
+        </dl>
+        <h3>Kurulum</h3>
+        <ol>
+          <li>Düğmeye dokunun; tarayıcı uyarı verirse <b>Yine de indir</b>'i seçin.</li>
+          <li>İnen <code>creda.apk</code> dosyasını açın.</li>
+          <li>İzin istenirse <b>Ayarlar</b> → <b>Bu kaynaktan izin ver</b>'i açıp geri dönün, <b>Yükle</b>'ye dokunun.</li>
+          <li>Play Protect uyarısında <b>Ayrıntılar</b> → <b>Yine de yükle</b>'yi seçin.</li>
+          <li><b>CREDA</b>'yı açıp giriş yapın; <b>Bildirimler</b> → <b>Telefon bildirimi</b> → <b>Aç</b> ile bildirimlere izin verin.</li>
+        </ol>
+        <p class="not">Güncellemede yeni APK'yı aynı şekilde indirip kurun; uygulama üzerine yazılır, oturumunuz korunur.</p>
+      </article>
+
+      <article class="kart" id="ios">
+        <div class="kart-ust">
+          <h2><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.28 1.86-3.38 1.95-3.43-1.06-1.55-2.71-1.77-3.3-1.79-1.4-.14-2.74.83-3.45.83-.71 0-1.81-.81-2.98-.79-1.53.02-2.94.89-3.73 2.26-1.59 2.76-.41 6.84 1.14 9.08.76 1.1 1.66 2.33 2.84 2.28 1.14-.05 1.57-.74 2.95-.74 1.38 0 1.77.74 2.98.71 1.23-.02 2.01-1.12 2.76-2.22.87-1.27 1.23-2.5 1.25-2.57-.03-.01-2.39-.92-2.41-3.64zM14.1 5.9c.63-.76 1.05-1.82.94-2.88-.91.04-2 .6-2.66 1.36-.58.67-1.09 1.75-.95 2.78 1.01.08 2.04-.51 2.67-1.26z"/></svg>iPhone / iPad</h2>
+          <span class="rozet">Bu cihaz için</span>
+        </div>
+        <a class="dugme" href="itms-services://?action=download-manifest&amp;url=https://cnliletisim.com/uygulamalar/ios/manifest.plist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          iPhone'a kur <small>164 KB</small>
+        </a>
+        <p class="uyari" id="ios-uyari">Kurulum düğmesi yalnız <b>Safari</b>'de çalışır. Bu sayfanın adresini kopyalayıp Safari'de açın.</p>
+        <dl class="detay">
+          <dt>Sürüm</dt><dd>1.1.0 (yapı 2)</dd>
+          <dt>Gereksinim</dt><dd>iOS / iPadOS 15 ve üzeri</dd>
+          <dt>Dosya</dt><dd><code>creda.ipa</code> · 164 KB</dd>
+          <dt>Paket</dt><dd><code>com.cnliletisim.creda</code></dd>
+          <dt>Dağıtım</dt><dd>Kurumsal (Ad Hoc) · yalnız kayıtlı cihazlar</dd>
+          <dt>Bildirimler</dt><dd>Anında gelir</dd>
+        </dl>
+        <h3>Kurulum</h3>
+        <ol>
+          <li>Bu sayfayı iPhone'da <b>Safari</b> ile açın ve düğmeye dokunun.</li>
+          <li>Çıkan pencerede <b>Yükle</b>'ye dokunun; uygulama ana ekrana iner.</li>
+          <li><b>CREDA</b>'yı açıp giriş yapın; <b>Bildirimler</b> → <b>Telefon bildirimi</b> → <b>Aç</b> ile bildirimlere izin verin.</li>
+        </ol>
+        <p class="not">Uygulama yalnız sisteme kayıtlı iPhone'lara kurulur. Kurulum başlamıyor ya da "yüklenemiyor" uyarısı çıkıyorsa cihazınızın kaydı için sistem yöneticinize başvurun.</p>
+      </article>
+    </div>
+
+    <section class="panel qr" id="qr" aria-label="Telefonla açın">
+      <div class="qr-kod" role="img" aria-label="Bu sayfanın QR kodu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h29v29H0z"/><path stroke="#0b2b86" d="M0 0.5h7m1 0h1m1 0h2m1 0h1m1 0h1m1 0h4m1 0h7M0 1.5h1m5 0h1m1 0h2m1 0h3m2 0h3m3 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h1m5 0h1m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h2m4 0h1m2 0h3m2 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m3 0h1m3 0h2m3 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m2 0h2m2 0h1m2 0h5m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m1 0h2m3 0h1m1 0h4M0 8.5h1m1 0h2m1 0h3m5 0h1m3 0h3m2 0h1m2 0h1m1 0h2M2 9.5h1m2 0h1m1 0h1m1 0h2m1 0h3m1 0h1m2 0h6m3 0h1M1 10.5h1m2 0h1m1 0h1m3 0h4m2 0h3m1 0h3m3 0h2M0 11.5h1m1 0h4m3 0h2m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1M1 12.5h4m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m5 0h2M3 13.5h1m1 0h1m2 0h2m1 0h2m1 0h3m1 0h3m1 0h1m3 0h3M0 14.5h1m1 0h1m2 0h2m6 0h1m2 0h1m2 0h4m3 0h3M4 15.5h1m3 0h1m5 0h3m3 0h1m2 0h1m3 0h1M1 16.5h2m2 0h5m1 0h2m1 0h2m2 0h4m1 0h3m1 0h1M1 17.5h1m1 0h1m1 0h1m2 0h2m2 0h1m1 0h2m4 0h2m1 0h1m1 0h3M0 18.5h1m1 0h1m1 0h4m1 0h1m3 0h5m2 0h1m5 0h1M3 19.5h1m3 0h2m3 0h3m2 0h2m1 0h1m3 0h1m1 0h1M1 20.5h1m1 0h1m2 0h4m3 0h2m1 0h3m1 0h7M8 21.5h3m5 0h1m3 0h1m3 0h5M0 22.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h5m1 0h1m1 0h2m1 0h1M0 23.5h1m5 0h1m1 0h2m1 0h1m1 0h2m3 0h1m1 0h1m3 0h2m2 0h1M0 24.5h1m1 0h3m1 0h1m2 0h1m1 0h1m5 0h1m2 0h5m1 0h1M0 25.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m2 0h1m1 0h1m1 0h3m2 0h1M0 26.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m4 0h2m3 0h1m2 0h1m1 0h1M0 27.5h1m5 0h1m2 0h2m1 0h4m2 0h6m1 0h1m1 0h1M0 28.5h7m1 0h6m4 0h4m1 0h1m3 0h1"/></svg>
+      </div>
+      <div>
+        <h2>Telefonla açın</h2>
+        <p>Kurulum telefondan yapılır. Telefonunuzun kamerasıyla kodu okutun veya adresi tarayıcıya yazın:</p>
+        <code>cnliletisim.com/uygulamalar</code>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="surumler-baslik">
+      <h2 id="surumler-baslik">Sürüm notları</h2>
+      <ol class="surumler" reversed>
+        <li>
+          <div class="surum-ust"><strong>1.1.0</strong><time datetime="2026-11-13">13 Kasım 2026</time><span class="yeni">Güncel</span></div>
+          <ul>
+            <li>Telefona anlık bildirim: iş emri hatırlatmaları, kontrol bildirimleri ve yönetici duyuruları.</li>
+            <li>Bildirime dokununca ilgili iş emri veya sayfa doğrudan açılır.</li>
+            <li>Bildirim izni uygulama içinden açılıp kapatılır; çıkış yapınca cihaz hesaptan ayrılır.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="surum-ust"><strong>1.0.0</strong><time datetime="2026-11-13">13 Kasım 2026</time></div>
+          <ul>
+            <li>İlk sürüm: CREDA System tam ekran uygulama olarak.</li>
+            <li>Doküman ve paket indirme, PDF önizleme, kamerayla fotoğraf yükleme.</li>
+            <li>Bağlantı kesildiğinde "Tekrar dene" ekranı.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <footer>© CNL İletişim Elektrik ve Elektronik</footer>
+  </main>
+  <script>
+    (function () {
+      var ua = navigator.userAgent;
+      // iPadOS kendini Mac olarak tanıttığı için dokunmatik ekran da kontrol edilir.
+      var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+      var android = /Android/.test(ua);
+      var hedef = ios ? 'ios' : android ? 'android' : null;
+      if (hedef) {
+        var kart = document.getElementById(hedef);
+        kart.classList.add('oneri');
+        kart.parentNode.insertBefore(kart, kart.parentNode.firstChild);
+      } else {
+        // Bilgisayardan açıldıysa telefona geçmek için QR kodu gösterilir.
+        document.getElementById('qr').classList.add('goster');
+      }
+      // iPhone'da Chrome/Firefox/Edge vb. itms-services bağlantısını açamaz.
+      if (ios && /CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(ua)) document.getElementById('ios-uyari').classList.add('goster');
+      var surum = /Android (\d+)/.exec(ua);
+      if (surum && Number(surum[1]) < 10) document.getElementById('android-uyari').classList.add('goster');
+    })();
+  </script>
+</body>
+</html>

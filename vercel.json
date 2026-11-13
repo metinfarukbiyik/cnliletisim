@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/uygulamalar", "destination": "/uygulamalar/index.html" }
+  ],
+  "redirects": [
+    { "source": "/uygulama", "destination": "/uygulamalar/", "permanent": true },
+    { "source": "/uygulama/:yol*", "destination": "/uygulamalar/:yol*", "permanent": true }
+  ]
+}
